@@ -1,0 +1,38 @@
+#===============================|
+#░█▄─░█ █▀▀█ ░█▀▀▀ █▀▀█ █── █── |
+#░█░█░█ █──█ ░█▀▀▀ █▄▄█ █── █── | 
+#░█──▀█ ▀▀▀▀ ░█─── ▀──▀ ▀▀▀ ▀▀▀ |
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
+#   NoFall! Made by iLeoable    |
+#   Stop fall damage when you   |
+#   want to. Auto updater also! |
+#===============================|
+#
+#=--=-=-=-=-=Settings=-=-=-=-=-=|
+options:
+	Version: 1.1
+	Prefix: &4&l&nNoFall &a/&6
+
+on join:
+	if {nofall.%player%.a} is not set:
+		set {nofall.%player%.a} to true
+		message "{@Prefix} Is now protecting you from fall damage."
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
+
+#=-=-=-=-=-=-Updater-=-=-=-=-=-=|
+every 5 hours:
+	set {nofall.lv} to text from "https://raw.github.com/iLeoable/NoFall/master/latest.xml"
+	wait 10 ticks
+	if {@Version} is not {nofall.lv}:
+		loop all players:
+			if loop-player is op:
+				send "{@Prefix} Please update NoFall by going to &rhttps://github.com/iLeoable/NoFall" to loop-player
+				wait 5 hours
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
+
+#=-=-=-=-=-=-=Main=-=-=-=-=-=-=-|
+on damage:
+	damage cause is fall
+	if {nofall.%victim%.a} is true:
+		cancel event
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
