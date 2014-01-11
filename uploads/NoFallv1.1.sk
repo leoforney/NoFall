@@ -21,29 +21,15 @@ on join:
 
 #=-=-=-=-=-=-Updater-=-=-=-=-=-=|
 every 5 hours:
-<<<<<<< HEAD
-	set {nofall.lv} to text from "https://raw.github.com/iLeoable/NoFall/master/latest.txt"
+	set {nofall.lv} to text from "https://raw.github.com/iLeoable/NoFall/master/latest.xml"
 	wait 10 ticks
 	if {@Version} is not "{nofall.lv}":
 		send "{@Prefix} Please update NoFall by going to &rhttps://github.com/iLeoable/NoFall" to console
-=======
-	set {nofall.lv} to text from "https://raw.github.com/iLeoable/NoFall/master/latest.xml"
-	wait 10 ticks
-	if {@Version} is not {nofall.lv}:
-		loop all players:
-			if loop-player is op:
-				send "{@Prefix} Please update NoFall by going to &rhttps://github.com/iLeoable/NoFall" to loop-player
-				wait 5 hours
->>>>>>> 76cbe4986e5471e5bde934461dfd4258964493a9
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
 
 #=-=-=-=-=-=-=Main=-=-=-=-=-=-=-|
 on damage:
 	damage cause is fall
-<<<<<<< HEAD
-	if {nofall.%player%.a} is true:
-=======
 	if {nofall.%victim%.a} is true:
->>>>>>> 76cbe4986e5471e5bde934461dfd4258964493a9
 		cancel event
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=|
